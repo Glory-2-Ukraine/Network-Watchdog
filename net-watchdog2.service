@@ -1,0 +1,16 @@
+[Unit]
+Description=Network watchdog v3 (GW neighbor + external TCP check; congestion-aware)
+After=network-online.target NetworkManager.service
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+Environment=IFACE=wlan0
+Environment=COOLDOWN_S=180
+ExecStart=/usr/local/bin/net-watchdog2.sh
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=net-watchdog2
+
+[Install]
+WantedBy=multi-user.target
