@@ -1,0 +1,10 @@
+[Unit]
+Description=Run net-watchdog2 every 60 seconds
+
+[Timer]
+OnBootSec=60
+OnUnitActiveSec=60
+Unit=net-watchdog2.service
+
+[Install]
+WantedBy=timers.target
